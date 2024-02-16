@@ -1,0 +1,27 @@
+this is really annoying, but don't want to spend time to figure out a better way.
+
+step 1: 
+put this in browser
+https://www.strava.com/oauth/authorize?client_id=CLIENT&
+redirect_uri=http://localhost:8080&
+response_type=code&
+scope=activity:read
+
+(client id can be found in strava developer account online)
+
+step 2:
+click authorize, get code from url
+
+step 3:
+
+use the code from the url, run this in terminal:
+curl -X POST https://www.strava.com/oauth/token \
+     -F client_id=CLIENT \
+     -F client_secret=SECRET \
+     -F code=CODE \ 
+     -F grant_type=authorization_code
+
+(client id and secret can be found in strava developer account online, code from step 2)
+
+step 4:
+copy access token. this will have the scope accesses from step 1 for 6 hours
